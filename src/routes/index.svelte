@@ -36,7 +36,7 @@
 	onDestroy(() => unsuscribe());
 </script>
 
-<Header title="Svelte Image Gallery" />
+<Header title="Svelte Gallery" />
 {#if $photosQuery.isLoading}
 	<p>loading</p>
 {:else if $photosQuery.status === 'error'}
@@ -57,13 +57,22 @@
 
 <style lang="scss">
 	.grid {
-		margin: 1rem 4rem;
+		margin: 1rem auto;
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		grid-auto-rows: 190px;
+		grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+		justify-items: center;
 		gap: 12px;
-		width: 70%;
-		margin: auto;
+
+		@media screen and (min-width: 1000px) {
+			width: 90%;
+		}
+		@media screen and (min-width: 1200px) {
+			width: 85%;
+		}
+
+		@media screen and (min-width: 1600px) {
+			width: 80%;
+		}
 	}
 
 	p {

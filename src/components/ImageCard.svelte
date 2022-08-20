@@ -14,7 +14,7 @@
 </script>
 
 <div bind:this={ref} class="container" on:click={openLink}>
-	<img src={image.largeImageURL} alt="" />
+	<img class="cardImg" src={image.largeImageURL} alt="" />
 	<div class="panel">
 		<h4>Photo by {image.user}</h4>
 		<span class="likes">Likes: {image.likes}</span>
@@ -27,19 +27,21 @@
 </div>
 
 <style lang="scss">
+	:global(.cardImg) {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
 	.container {
+		aspect-ratio: 16/9;
+		min-height: 160px;
+		max-height: 190px;
 		cursor: pointer;
 		position: relative;
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-		img {
-			height: 100%;
-			width: 100%;
-			object-fit: cover;
-		}
 
 		.panel {
 			display: none;
@@ -48,7 +50,7 @@
 			left: 0;
 			z-index: 1;
 			margin: 12px 8px;
-			animation: slidein 500ms;
+			animation: slidein 600ms;
 		}
 
 		.tagsList {
@@ -59,7 +61,7 @@
 			width: 100%;
 			z-index: 1;
 			padding: 12px 8px;
-			animation: slidein 500ms;
+			animation: slidein 600ms;
 		}
 
 		&:hover {
